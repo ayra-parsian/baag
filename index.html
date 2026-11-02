@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173b62">
+<title>باگ | بانک اطلاعات گزارش‌های کارشناسی</title>
+<style>
+:root{--navy:#173b62;--blue:#24649a;--bg:#f3f6fa;--ink:#172536;--muted:#66788a;--line:#dce4ec;--white:#fff;--green:#19764a;--amber:#9a6412}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Tahoma,Arial,sans-serif;color:var(--ink);line-height:1.7}
+header{background:linear-gradient(130deg,#173b62,#285f8f);color:white;padding:22px max(18px,calc((100% - 1120px)/2))}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{display:flex;align-items:center;gap:13px}.logo{width:54px;height:54px;border:1px solid #ffffff70;border-radius:16px;display:grid;place-items:center;font-weight:bold;font-size:25px}.brand h1{font-size:25px;margin:0}.brand p{margin:0;color:#d9e8f5;font-size:12px}.user-pill{border:1px solid #ffffff55;border-radius:30px;padding:7px 13px;font-size:12px}
+main{max-width:1120px;margin:22px auto;padding:0 16px}.hero{background:white;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 18px #183b5b0a}.hero h2{margin:0 0 4px;font-size:20px}.hero p{margin:0;color:var(--muted);font-size:13px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.stat{background:white;border:1px solid var(--line);border-radius:14px;padding:14px}.stat b{display:block;font-size:23px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}
+.tabs{display:flex;gap:8px;overflow:auto;margin:18px 0}.tab{border:1px solid var(--line);background:white;color:var(--navy);border-radius:11px;padding:10px 15px;white-space:nowrap;cursor:pointer;font:inherit;font-size:13px}.tab.active{background:var(--navy);color:white;border-color:var(--navy)}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:16px}.panel h3{margin:0 0 14px;font-size:17px}.toolbar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:9px;margin-bottom:14px}
+input,select,textarea{width:100%;border:1px solid #ccd7e2;border-radius:10px;padding:11px 12px;background:white;font:inherit;font-size:13px;color:var(--ink)}textarea{min-height:90px;resize:vertical}label{display:block;font-size:12px;color:#46586b;margin-bottom:6px}.field{margin-bottom:13px}
+button{font:inherit;cursor:pointer}.primary{background:var(--blue);color:white;border:0;border-radius:10px;padding:11px 17px}.secondary{background:#edf3f8;color:var(--navy);border:1px solid #d7e2ec;border-radius:10px;padding:9px 13px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.report{border:1px solid var(--line);border-radius:13px;padding:14px}.report h4{margin:0 0 7px;font-size:14px}.meta{display:flex;flex-wrap:wrap;gap:6px;margin:9px 0}.tag{background:#eef4f9;color:#315a7e;border-radius:20px;padding:3px 8px;font-size:11px}.report p{font-size:12px;color:var(--muted);margin:7px 0}.report small{color:var(--muted)}
+.notice{background:#fff8e9;border:1px solid #f0d9a9;color:#755014;border-radius:12px;padding:12px;font-size:12px;margin-bottom:14px}
+.success{background:#edf8f1;border:1px solid #c8e6d2;color:#17623e;padding:10px;border-radius:10px;font-size:12px;display:none;margin:10px 0}
+.hidden{display:none!important}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}.muted{color:var(--muted);font-size:12px}.empty{padding:28px;text-align:center;color:var(--muted);font-size:13px}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:20px}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}.toolbar,.cards,.grid2{grid-template-columns:1fr}.user-pill{display:none}header{padding:17px}.brand h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div class="logo">باگ</div><div><h1>بانک اطلاعات گزارش‌های کارشناسی</h1><p>سامانه تبادل دانش و تجربیات کارشناسان رسمی دادگستری</p></div></div><div class="user-pill">نسخه نمایشی اولیه · رشته ساختمان تهران</div></div></header>
+<main>
+<section class="hero"><h2>تجربه یک کارشناس، سرمایه همه کارشناسان</h2><p>جستجو در نمونه گزارش‌های پالایش‌شده، ثبت تجربه کارشناسی و دسترسی به دانش تخصصی همکاران.</p></section>
+<div class="stats"><div class="stat"><b id="countReports">۶</b><span>نمونه گزارش نمایشی</span></div><div class="stat"><b>۲۲</b><span>منطقه شهرداری تهران</span></div><div class="stat"><b>۱</b><span>رشته فعال در نسخه نخست</span></div></div>
+<nav class="tabs">
+<button class="tab active" data-tab="library">بانک گزارش‌ها</button><button class="tab" data-tab="submit">ارسال گزارش</button><button class="tab" data-tab="saved">گزارش‌های منتخب</button><button class="tab" data-tab="about">راهنما و امنیت</button>
+</nav>
+<section id="library" class="panel">
+<h3>جستجو در بانک گزارش‌ها</h3>
+<div class="toolbar">
+<input id="q" placeholder="مثلاً سرقفلی، ماده ۱۰۰، سعادت‌آباد..." aria-label="جستجو">
+<select id="cat"><option value="">همه موضوعات</option><option>ارزیابی املاک</option><option>امور ساختمانی</option><option>شهرداری و ماده ۱۰۰</option><option>سرقفلی و حق کسب</option><option>اراضی و عکس هوایی</option><option>پاسخ به اعتراض</option></select>
+<select id="area"><option value="">همه مناطق / شهرستان‌ها</option><option>منطقه ۱</option><option>منطقه ۲</option><option>منطقه ۵</option><option>منطقه ۶</option><option>شمیرانات</option><option>شهریار</option><option>اسلامشهر</option></select>
+</div>
+<div id="reports" class="cards"></div><div id="noResults" class="empty hidden">گزارشی با این مشخصات پیدا نشد.</div>
+</section>
+<section id="submit" class="panel hidden">
+<h3>ارسال داوطلبانه گزارش کارشناسی</h3>
+<div class="notice">در این نسخه نمایشی، اطلاعات فقط در همین مرورگر ثبت می‌شود و به سرور ارسال نمی‌شود. پیش از هرگونه بارگذاری واقعی، اطلاعات هویتی اشخاص، نشانی دقیق، شماره پرونده، امضا و سایر داده‌های محرمانه باید حذف شوند.</div>
+<div id="submitSuccess" class="success">اطلاعات نمونه در همین مرورگر ثبت شد. در نسخه عملیاتی، ابتدا گزارش خام به بخش بررسی محرمانه ارسال و فقط نسخه پالایش‌شده پس از تأیید منتشر خواهد شد.</div>
+<form id="reportForm">
+<div class="grid2">
+<div class="field"><label>عنوان گزارش *</label><input required name="title" placeholder="مثلاً ارزیابی آپارتمان مسکونی"></div>
+<div class="field"><label>موضوع کارشناسی *</label><select required name="category"><option value="">انتخاب کنید</option><option>ارزیابی املاک</option><option>امور ساختمانی</option><option>شهرداری و ماده ۱۰۰</option><option>سرقفلی و حق کسب</option><option>اراضی و عکس هوایی</option><option>پاسخ به اعتراض</option></select></div>
+<div class="field"><label>منطقه / شهرستان *</label><input required name="area" placeholder="مثلاً منطقه ۵ یا شهریار"></div>
+<div class="field"><label>سال تنظیم گزارش</label><select name="year"><option>۱۴۰۵</option><option>۱۴۰۴</option><option>۱۴۰۳</option><option>۱۴۰۲</option><option>۱۴۰۱ و قبل‌تر</option></select></div>
+<div class="field"><label>مرجع ارجاع</label><select name="source"><option>دادگستری</option><option>اجرای احکام / اجرای ثبت</option><option>شهرداری</option><option>بانک</option><option>سازمان یا اداره</option><option>سایر</option></select></div>
+<div class="field"><label>نوع نظریه</label><select name="kind"><option>کارشناسی انفرادی</option><option>هیئت سه‌نفره</option><option>هیئت پنج‌نفره</option><option>نظریه تکمیلی</option></select></div>
+</div>
+<div class="field"><label>خلاصه موضوع و نکات قابل جستجو</label><textarea name="summary" placeholder="شرح کوتاه، روش کارشناسی، نکات فنی و کلیدواژه‌ها؛ بدون اطلاعات هویتی یا محرمانه"></textarea></div>
+<div class="field"><label>فایل گزارش پالایش‌شده (PDF یا DOCX)</label><input type="file" name="file" accept=".pdf,.doc,.docx"></div>
+<div class="field"><label><input type="checkbox" required style="width:auto"> تأیید می‌کنم اختیار انتشار این نسخه را دارم و اطلاعات محرمانه اشخاص و پرونده‌ها از آن حذف شده است.</label></div>
+<button class="primary" type="submit">ثبت در نسخه نمایشی</button>
+</form>
+</section>
+<section id="saved" class="panel hidden"><h3>گزارش‌های منتخب</h3><div id="savedReports" class="cards"></div><div id="savedEmpty" class="empty">هنوز گزارشی به فهرست منتخب اضافه نکرده‌اید.</div></section>
+<section id="about" class="panel hidden">
+<h3>راهنمای استفاده و اصول امنیت</h3>
+<div class="notice">این محصول فعلاً نمونه اولیه رابط کاربری است؛ احراز هویت، پایگاه داده مرکزی، فضای ذخیره‌سازی امن و انتشار واقعی هنوز پیاده‌سازی نشده‌اند.</div>
+<ul class="muted">
+<li>عضویت عملیاتی باید با تطبیق کد ملی، شماره پروانه/عضویت، رشته و مرجع صادرکننده پروانه انجام شود.</li>
+<li>رمز یک‌بارمصرف باید از طریق ارائه‌دهنده پیامک معتبر ارسال شود؛ کد ملی به‌تنهایی کافی نیست.</li>
+<li>گزارش خام فقط برای کارشناس ارسال‌کننده و بازبین مجاز قابل دسترسی باشد.</li>
+<li>نسخه پالایش‌شده پس از تأیید مدیر محتوا برای همه کارشناسان احرازشده منتشر شود.</li>
+<li>برای هر گزارش، رضایت انتشار، سطح دسترسی، تاریخچه ویرایش و هویت بازبین ثبت شود.</li>
+<li>داده‌های هویتی و پرونده‌ای غیرضروری نباید در موتور جستجو یا فایل عمومی ذخیره شوند.</li>
+</ul>
+<h3>نقشه راه ساخت نسخه عملیاتی</h3>
+<ol class="muted"><li>طراحی پایگاه داده و API مرکزی</li><li>پیاده‌سازی احراز هویت و نقش‌ها</li><li>بارگذاری امن و پالایش محرمانگی</li><li>پنل مدیریت و تأیید انتشار</li><li>جستجوی پیشرفته و نسخه اندروید / وب</li><li>پشتیبان‌گیری، آزمون امنیت و بهره‌برداری آزمایشی</li></ol>
+</section>
+</main>
+<footer>باگ · جواد رجبی، کارشناس رسمی دادگستری استان تهران · اطلاعات نمونه‌اند و گزارش واقعی یا مرجع رسمی محسوب نمی‌شوند.</footer>
+<script>
+const seed=[
+{id:1,title:"نمونه ارزیابی آپارتمان مسکونی",category:"ارزیابی املاک",area:"منطقه ۲",year:"۱۴۰۵",source:"دادگستری",kind:"کارشناسی انفرادی",summary:"نمونه ساختاری برای ارزیابی آپارتمان؛ شامل مشخصات فیزیکی، موقعیت، امکانات و تحلیل معاملات مشابه."},
+{id:2,title:"نمونه نظریه بررسی اضافه بنا و ماده ۱۰۰",category:"شهرداری و ماده ۱۰۰",area:"شمیرانات",year:"۱۴۰۴",source:"شهرداری",kind:"هیئت سه‌نفره",summary:"نمونه بررسی وضع موجود، پروانه، پایان‌کار، ضوابط شهرسازی و انطباق مستندات."},
+{id:3,title:"نمونه ارزیابی سرقفلی واحد تجاری",category:"سرقفلی و حق کسب",area:"منطقه ۱۲",year:"۱۴۰۵",source:"اجرای احکام / اجرای ثبت",kind:"کارشناسی انفرادی",summary:"نمونه چارچوب بررسی موقعیت تجاری، نوع فعالیت، دسترسی، مساحت و عوامل مؤثر بر ارزش."},
+{id:4,title:"نمونه گزارش عیب و نقص ساختمانی",category:"امور ساختمانی",area:"منطقه ۵",year:"۱۴۰۴",source:"دادگستری",kind:"کارشناسی انفرادی",summary:"نمونه دسته‌بندی عیوب، مستندسازی بازدید، تعیین منشأ احتمالی و برآورد هزینه اصلاح."},
+{id:5,title:"نمونه تفسیر عکس هوایی اراضی",category:"اراضی و عکس هوایی",area:"شهریار",year:"۱۴۰۳",source:"سازمان یا اداره",kind:"کارشناسی انفرادی",summary:"نمونه بررسی تصاویر تاریخی، مقایسه دوره‌ها و بیان محدودیت‌های تفسیر عکس هوایی."},
+{id:6,title:"نمونه پاسخ به اعتراض نظریه کارشناسی",category:"پاسخ به اعتراض",area:"منطقه ۶",year:"۱۴۰۵",source:"دادگستری",kind:"هیئت سه‌نفره",summary:"نمونه پاسخ مستدل به ایرادات مؤثر نسبت به روش کارشناسی و تفکیک اعتراض از ایراد فنی."}
+];
+let reports=[...seed],saved=new Set();
+const fa=n=>String(n).replace(/\d/g,d=>"۰۱۲۳۴۵۶۷۸۹"[d]);
+function render(){
+ const q=document.getElementById('q').value.trim().toLowerCase(),cat=document.getElementById('cat').value,area=document.getElementById('area').value;
+ const list=reports.filter(r=>(!q||(r.title+r.summary+r.category+r.area).toLowerCase().includes(q))&&(!cat||r.category===cat)&&(!area||r.area===area));
+ document.getElementById('reports').innerHTML=list.map(card).join('');
+ document.getElementById('noResults').classList.toggle('hidden',list.length>0);
+ document.getElementById('countReports').textContent=fa(reports.length);
+ document.getElementById('savedReports').innerHTML=reports.filter(r=>saved.has(r.id)).map(card).join('');
+ document.getElementById('savedEmpty').classList.toggle('hidden',saved.size>0);
+}
+function card(r){return `<article class="report"><h4>${esc(r.title)}</h4><div class="meta"><span class="tag">${esc(r.category)}</span><span class="tag">${esc(r.area)}</span><span class="tag">${esc(r.year)}</span></div><p>${esc(r.summary)}</p><small>مرجع: ${esc(r.source)} · ${esc(r.kind)}</small><div style="margin-top:11px"><button class="secondary" onclick="toggleSave(${r.id})">${saved.has(r.id)?"حذف از منتخب":"☆ افزودن به منتخب"}</button></div></article>`}
+function esc(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function toggleSave(id){saved.has(id)?saved.delete(id):saved.add(id);render()}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');['library','submit','saved','about'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==b.dataset.tab));}));
+['q','cat','area'].forEach(id=>document.getElementById(id).addEventListener(id==='q'?'input':'change',render));
+document.getElementById('reportForm').addEventListener('submit',e=>{e.preventDefault();const f=new FormData(e.target);const r={id:Date.now(),title:f.get('title'),category:f.get('category'),area:f.get('area'),year:f.get('year'),source:f.get('source'),kind:f.get('kind'),summary:f.get('summary')||"گزارش جدید؛ در انتظار بررسی و تأیید مدیر سامانه."};reports.unshift(r);document.getElementById('submitSuccess').style.display='block';e.target.reset();render();});
+render();
+</script>
+</body></html>
